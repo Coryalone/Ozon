@@ -43,7 +43,7 @@ def rate_avg(dictionary, titles):
             list_of_rate.append(value)
     avg = round((sum(list_of_rate) / len(titles)), 3)
     number_of_serial = len(titles) #задание 3
-    return 'Средний рейтинг сериалов: ' + str(avg), 'Число сериалов: ' + str(number_of_serial)
+    return 'Средний рейтинг жанров: ' + str(avg), 'Число сериалов: ' + str(number_of_serial)
 
 print(rate_avg(ratings, list_of_drama))
 print(rate_avg(ratings, list_of_crime))
