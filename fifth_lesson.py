@@ -9,13 +9,13 @@ olya = {'Клан Сопрано': 'криминал', '24': 'драма', 'Во
 nastya = {'Ведьмак': 'фэнтази', 'Игра престолов': 'фэнтази'}
 sveta = {'Черное зеркало': 'фантастика', 'Карточный домик': 'драма', 'Рик и Морти': 'фантастика'}
 
-#задание 1
+
 def cross(dictionary, dict2):
-    a = set(dictionary.values())
-    b = set(dict2.values())
-    notnull = a & b
+    set_values_of_the_first_girl = set(dictionary.values())
+    set_values_of_the_second_girl = set(dict2.values())
+    notnull = set_values_of_the_first_girl & set_values_of_the_second_girl
     
-    return {'нет общих жанров'}  if notnull == set() else a & b
+    return {'нет общих жанров'}  if notnull == set() else set_values_of_the_first_girl & set_values_of_the_second_girl
 
 tuple_of_cross = cross(anya, nastya), cross(olya, sveta), cross(sveta, anya)
 
@@ -33,6 +33,8 @@ def select_titles(dictionary, genre):
 
 list_of_drama = select_titles(shows, 'драма')            
 list_of_crime = select_titles(shows, 'криминал')
+
+
            
 
 def rate_avg(dictionary, titles):
@@ -58,7 +60,7 @@ def stata(genre):
     return 'Выбраный жанр ' + genre,'Результат выборки: ' + tune, avg
 
 
-def cicle():
+def statistics_of_unical_genre():
     list_of_unique_genre  = []
     for i in shows.values():
         if i not in list_of_unique_genre:
@@ -67,7 +69,11 @@ def cicle():
     for i in  list_of_unique_genre:
         print(stata(i))
 
-cicle()          
+statistics_of_unical_genre()
+
+
+
+
 
 
 
