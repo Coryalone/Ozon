@@ -18,7 +18,7 @@ print()
 #задание 2
 
 sub_string = 'кошка'
-with open('cats.txt') as f:
+with open('lesson06_cats_of_ulthar.txt') as f:
     lines_of_file = f.readlines()
 
 count_of_cats = 0    
