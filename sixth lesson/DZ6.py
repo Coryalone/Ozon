@@ -50,6 +50,7 @@ with open('diary.txt') as f:
 
 for i in lines:
     print(i.strip())
+print()
 
 #задание 4
 
