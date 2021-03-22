@@ -36,6 +36,7 @@ for i in lines_of_file:
     if  re.search(r"\bкошка\b", i):
             print(i)
 print()
+
 #задание 3 
   
 date = input('Введите текущую дату: ')
@@ -63,7 +64,7 @@ pi_string = ''
 for line in lines:
     pi_string += line
 
-birthyear = input('Ведите дату вашего рождения ')
+birthyear = input('Ведите год вашего рождения ')
 if birthyear in pi_string:
     print('Первое вхождение находится по индексу: ' + str(pi_string.find(birthyear))) 
 else:
