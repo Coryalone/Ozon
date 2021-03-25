@@ -11,7 +11,7 @@ def thanos(path):
     for x in path:
         if count <= math.ceil(count_of_file / 2):
             draw = random.choice(path)
-            if not draw.endswith('.idea') and not x.endswith('.idea') and not os.path.isdir(x):
+            if not draw.endswith('.idea') and not os.path.isdir(x):
                 os.remove(x)
                 count += 1
 
