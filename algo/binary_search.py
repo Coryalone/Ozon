@@ -1,30 +1,19 @@
+def bs_new_born(array, item):
+    return private_bs_new_born(array, item, 0, len(array)-1)
 
+def private_bs_new_born(array, item, low, high):
+    if (array[low] <= array[high]):
+        mid = (low + high) // 2
+        guess = array[mid]
 
-import random
-
-#print(arr)
-
-def random_generate(length):
-    x = []
-    for i in range(1, length):
-        x.append(random.randint(1, length))
-    return x
-global i
-
-data = list(range(1, 10))
-def binary_search(arr,   x, high, counter):
-    #counter = 0
-    # проверяем базовый случай
-    if high >= arr[0]:
-        counter += 1
-        mid = (arr[0] + high) // 2
-        if arr[mid] == x:
-            return f'индекс {mid}, шагов{counter}'
-        elif arr[mid] > x:
-            return binary_search(arr,   x, mid - 1, counter)
+        if guess == item:
+            return mid
+        if guess > item:
+            return private_bs_new_born(array, item, low, mid - 1)
         else:
-            return binary_search(arr,   x, mid + 1, counter)
-    else:
-        return -1
+            return private_bs_new_born(array, item, mid + 1, high)
+    return 'Are you sure?'
 
-print(binary_search(data, 6, len(data), 0))
+my_list = list(range(0, 1000, 1))
+
+print(bs_new_born(my_list, 10))
