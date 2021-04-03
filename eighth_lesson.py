@@ -51,8 +51,6 @@ def selection_sort(input_list):
         input_list[i], input_list[min_i] = input_list[min_i], input_list[i]
     return time.time() - start_time # время выполнения в секундах
 
-list_of_generetion = [random.randrange(0, 1000) for i in range(1000)]
-
 def list_generate(number):
     list_of_generetion = [random.randrange(0, number) for i in range(number)]
     return list_of_generetion
