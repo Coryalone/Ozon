@@ -26,7 +26,6 @@ print()
 # задание 2
 
 def func(animal):
-    #print(listt)
     if re.search(r'\bк', animal) or re.search(r'\bл', animal):
         return True
     else:
