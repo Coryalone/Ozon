@@ -51,6 +51,6 @@ print()
 
 # задание 4
 
-full_series_info = {key: {'Жанр': value, 'Рейтинг': rate} for key, value in shows.items() for key, rate in ratings.items()}
+full_series_info = {key: {'Жанр': value, 'Рейтинг': rate} for key, value in shows.items() for serial, rate in ratings.items() if key == serial}
 print(full_series_info)
 
