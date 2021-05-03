@@ -2,7 +2,7 @@ import random
 import telebot
 import requests
 from bs4 import BeautifulSoup as BS
-import re
+
 
 bot = telebot.TeleBot("1777037080:AAGHut45GniubiW4f5ejHqbD0RYeMz1We2w")
 
@@ -26,30 +26,20 @@ def pars_weather(city):
         text = el.select('.wDescription .description')[0].text
         return f'{tem_min}, {tem_max}.{text}'
 
-@bot.message_handler(commands = ['start', 'help'])
+@bot.message_handler(content_types = ['text'])
 def send_welcome(message):
     global list_of_Russia_city
     intro = random.choice(['Привет, ', 'Добрый день! ', 'Отличный Вопрос! '])
     city = message.text
-    check_without_city = message.text
-    city = re.sub('/start', '', city)
-    city = city.title().strip()
+    if city == '/start':
+        pass
+    else:
+        city = city.title().strip()
     if city in list_of_Russia_city:
         bot.send_message(message.chat.id, f'{intro}{message.from_user.first_name} погода в городе {city} сегодня:\n' + str(pars_weather(city)))
-    elif check_without_city == '/start':
-        bot.reply_to(message, f'Привет {message.from_user.first_name}. Для моей корректной работы используй конструкцию /start и название города Росии')
+    elif city == '/start':
+        bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}. Я Бот который показывает погоду в городах России. Для моей корректной работы напиши пожалуйста название города Росии')
     else:
-        bot.reply_to(message, 'В России нет такого города')
-
-@bot.message_handler(func = lambda message: True)
-def true_path(message):
-    bot.reply_to(message, f'Привет {message.from_user.first_name}, я Бот который показывает погоду в городах России. Для моей корректной работы используй конструкцию /start и название города Росии')
-
-
-
-
-
-
-
-
+        bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}. В России нет такого города, введи пожалуйста корректное название города')
+        
 bot.polling()
