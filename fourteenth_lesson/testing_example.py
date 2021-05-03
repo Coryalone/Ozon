@@ -9,7 +9,7 @@ def calculate_credit(s, r, n):
         result = int(s * (r * (1 + r) ** n) / ((1 + r) ** n - 1))
         return result
     else:
-        print('Вы ввели недопустимое значение')
+        return 'Вы ввели недопустимое значение'
 
 
 # Простой класс калькулятора
