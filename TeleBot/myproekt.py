@@ -13,9 +13,9 @@ soup = BS(data, 'html.parser')
 list_of_Russia_city = []
 links = soup.find_all('tr')
 for link in links:
-    a = (link.find('td', {'align':'left'}))
-    if a != None and a.has_attr('align'):
-        list_of_Russia_city.append(a.find('a').text)
+    link = (link.find('td', {'align':'left'}))
+    if link != None and link.has_attr('align'):
+        list_of_Russia_city.append(link.find('a').text)
 
 def pars_weather(city):
     r = requests.get(f'https://sinoptik.ua/погода-{city}')
