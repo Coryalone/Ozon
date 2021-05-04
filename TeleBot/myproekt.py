@@ -36,10 +36,10 @@ def send_welcome(message):
     else:
         city = city.title().strip()
     if city in list_of_Russia_city:
-        bot.send_message(message.chat.id, f'{intro}{message.from_user.first_name} погода в городе {city} сегодня:\n' + str(pars_weather(city)))
+        bot.send_message(message.chat.id, f'{intro}{message.from_user.first_name}, погода в городе {city} сегодня:\n' + str(pars_weather(city)))
     elif city == '/start':
-        bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}. Я Бот который показывает погоду в городах России. Для моей корректной работы напиши пожалуйста название города России')
+        bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}. Я Бот который показывает погоду в городах России. Для моей корректной работы напиши, пожалуйста, название города России')
     else:
-        bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}. В России нет такого города, введи пожалуйста корректное название города')
+        bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}. В России нет такого города, введи, пожалуйста, корректное название города')
         
 bot.polling()
