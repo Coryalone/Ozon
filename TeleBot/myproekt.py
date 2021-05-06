@@ -83,7 +83,7 @@ def send_welcome(message):
             day_after_tomorrow = day_after_tomorrow.strftime("%Y-%m-%d")
             day_after_tomorrow = city + '/' + day_after_tomorrow
             print(day_after_tomorrow+'gogo')
-            bot.send_message(message.chat.id, f'{intro}{message.from_user.first_name}, погода в городе {city} на ближайшие дни:\n \n' + f'Сегодня: {date} ' + str(pars_weather(city)) +'\n' \
+            bot.send_message(message.chat.id, f'{intro}{message.from_user.first_name}, погода в городе {city} на ближайшие дни:\n \n' + f'Сегодня: ' + str(pars_weather(city)) +'\n' \
                              + '\n' + str(pars_weather(tomorrow)) + '\n' +'\n' + str(pars_weather(day_after_tomorrow)))
         else:
             bot.send_message(message.chat.id, f'Привет {message.from_user.first_name}. Если хочешь узнать погоду на несколько дней, напиши название города, поставь пробел и добавь слово "скоро"')
