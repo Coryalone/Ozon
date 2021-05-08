@@ -23,24 +23,22 @@ for link in links:
 
 def pars_weather(city):
     date = datetime.datetime.today()
-    date = datetime.datetime.date(date)
-    print(date)
+    date = datetime.datetime.date(date)    
     tomorrow = datetime.datetime.today()
     tomorrow = tomorrow + datetime.timedelta(days=1)
-    tomorrow = datetime.datetime.date(tomorrow)
-    print(tomorrow)
+    tomorrow = datetime.datetime.date(tomorrow)    
     if re.search(r'\/', city):
-        citys = re.sub(r'[а-я-А-Я]+\/', '', city)
-        citys = citys.replace('-', '')
-        citys = datetime.datetime.strptime(citys, '%Y%m%d').date()
-        if citys > date and citys == tomorrow:
+        current_date = re.sub(r'[а-я-А-Я]+\/', '', city)
+        current_date = current_date.replace('-', '')
+        current_date = datetime.datetime.strptime(current_date, '%Y%m%d').date()
+        if current_date > date and current_date == tomorrow:
             r = requests.get(f'https://sinoptik.ua/погода-{city}')
             html = BS(r.content, 'html.parser')
             for el in html.select('#content'):
                 zavtra = 'Завтра ' + el.select('.temperature .min')[1].text, el.select('.temperature .max')[1].text
                 text = el.select('.wDescription .description')[0].text
                 return f'{str(zavtra[0])} {str(zavtra[1])}. {text}'
-        elif citys > tomorrow:
+        elif current_date > tomorrow:
             r = requests.get(f'https://sinoptik.ua/погода-{city}')
             html = BS(r.content, 'html.parser')
             for el in html.select('#content'):
@@ -76,13 +74,11 @@ def send_welcome(message):
             tomorrow = datetime.datetime.today()
             tomorrow = tomorrow + datetime.timedelta(days=1)
             tomorrow = tomorrow.strftime("%Y-%m-%d")
-            tomorrow = city + '/' + tomorrow
-            print(tomorrow+'go')
+            tomorrow = city + '/' + tomorrow            
             day_after_tomorrow = datetime.datetime.today()
             day_after_tomorrow = day_after_tomorrow + datetime.timedelta(days=2)
             day_after_tomorrow = day_after_tomorrow.strftime("%Y-%m-%d")
-            day_after_tomorrow = city + '/' + day_after_tomorrow
-            print(day_after_tomorrow+'gogo')
+            day_after_tomorrow = city + '/' + day_after_tomorrow            
             bot.send_message(message.chat.id, f'{intro}{message.from_user.first_name}, погода в городе {city} на ближайшие дни:\n \n' + f'Сегодня: ' + str(pars_weather(city)) +'\n' \
                              + '\n' + str(pars_weather(tomorrow)) + '\n' +'\n' + str(pars_weather(day_after_tomorrow)))
         else:
